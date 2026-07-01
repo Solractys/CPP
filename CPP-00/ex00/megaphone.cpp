@@ -6,35 +6,30 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 11:27:02 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/06/20 12:12:09 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/06/30 20:28:31 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cctype>
 #include <iostream>
 #include <unistd.h>
+#include <vector>
 
-class	sayClass {
-	public:
-		int		id;
-		void set_id(int);
-		void	say(std::string str);
-};
-
-void sayClass::set_id(int n)
+int	main(int ac, char *av[])
 {
-	id = n;
-}
-
-void	sayClass::say(std::string str)
-{
-	std::cout << str << std::endl;
-}
-
-int	main()
-{
-	sayClass sayHi;
-	sayHi.set_id(42);
-	sayHi.say("Hello");
-	std::cout << sayHi.id;
+	for (int i = 0; i < ac; i++)
+	{
+		for (int j = 0; av[i][j]; j++)
+		{
+			av[i][j] = toupper(av[i][j]);
+		}
+	}
+	if (ac == 1)
+	{
+		std::cout <<  "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (0);
+	}
+	for (int i = 1; i < ac; i++)
+		std::cout << av[i];
 	return (0);
 }
