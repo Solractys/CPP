@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:46:50 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/10 01:50:18 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/11 18:56:59 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ Contact create_contact(void)
 int	main(void)
 {
 	PhoneBook phones;
+	int i = 0;
 	while (1)
 	{
 		Contact phone = create_contact();
-		phones.add(phone);
+		phones.add(phone, i);
 		phones.printPhones();
+		i++;
 	}
 	return (0);
 }

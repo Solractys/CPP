@@ -6,23 +6,22 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 22:07:43 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/10 01:56:46 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/11 18:57:47 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _index(0) {}
+PhoneBook::PhoneBook() {}
 
-void	PhoneBook::add(Contact &phone)
+void	PhoneBook::add(Contact &phone, int i)
 {
-	_phones[_index] = phone;
-	if (_index < 8)
-		_index = _index + 1;
-	else
-		_index = 0;
-
+		if(i < 8)
+			_phones[i] = phone;
+		else
+			_phones[i  % 8] = phone;
 }
+
 void	PhoneBook::printPhones(void)
 {
 	for (int i = 0; i < 8; i++)
