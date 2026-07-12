@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:09:14 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/11 17:21:47 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/12 15:30:40 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class PhoneBook
 	public:
 		PhoneBook();
 		void	add(Contact &phone, int i);
+		// Contact	search(int index);
 		void	printPhones();
 };
 
