@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 22:07:52 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/10 01:07:12 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/13 19:32:50 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,4 @@ std::string	Contact::getLastName() const { return _lastName; }
 std::string	Contact::getNickname() const { return _nickname; }
 std::string	Contact::getPhone() const { return _phone; }
 std::string	Contact::getDarkSecret() const { return _darkSecret; }
+int			Contact::getUserId() const { return _Id; }

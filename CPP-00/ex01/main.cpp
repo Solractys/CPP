@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:46:50 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/12 19:11:37 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/13 19:33:13 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ std::string	ft_get_input(void)
 {
 
 	std::string	opt;
-	std::cout << "Escolha uma opção:" << std::endl;
-	std::cout << "1: Adicionar um contato" << std::endl;
-	std::cout << "2: Buscar um contato" << std::endl;
-	std::cout << "3: Sair" << std::endl;
+	std::cout << "\tChoose a option:" << std::endl;
+	std::cout << "\t\t1: Add a contact" << std::endl;
+	std::cout << "\t\t2: Search a contact" << std::endl;
+	std::cout << "\t\t3: Exit" << std::endl;
+	std::cout << "> ";
 	std::cin >> opt; 
 	return (opt);
 }
@@ -71,9 +72,11 @@ int	main(void)
 				i++;
 				break;
 			}
-			//TODO: Create a search function
 			case 2:
 			{
+				//TODO: Implementar os indices [x]
+				// Criar a funćão que printa a tabela com as 4 colunas [ ]
+				// 
 				phones.printPhones();
 				break ;
 			}

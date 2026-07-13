@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:04:22 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/10 00:26:35 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/13 19:31:20 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Contact
 		std::string _nickname;
 		std::string _phone;
 		std::string _darkSecret;
+		int			_id
 	public:
 		Contact();
 		Contact(
@@ -30,7 +31,8 @@ class Contact
 			const std::string& lastName,
 			const std::string& nickname,
 			const std::string& phone,
-			const std::string& darkSecret
+			const std::string& darkSecret,
+			int id
 		);
 		~Contact();
 		std::string getFirstName() const;
@@ -38,6 +40,7 @@ class Contact
 		std::string getNickname() const;
 		std::string getPhone() const;
 		std::string getDarkSecret() const;
+		int			getUserId() const;
 };
 
 #endif
