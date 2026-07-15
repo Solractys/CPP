@@ -6,11 +6,12 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:46:50 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/13 19:33:13 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/15 20:41:29 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <cstdlib>
 #include "Contact.hpp"
@@ -56,6 +57,43 @@ std::string	ft_get_input(void)
 	return (opt);
 }
 
+// TODO: Funcao pra formatar o nome / truncar se necessário
+std::string	ft_format_name(std::string	name)
+{
+	if (name.length() =< 10)
+			return (name);
+	// TODO: Achar um método pra truncar a string e substituir o ultimo char por '.'
+	name.truncate() // ???
+}
+
+void	ft_print_table_row(Contact phone)
+{
+	std::cout << std::left << std::setfill(' ')
+		<< std::setw(10) << phone.getUserId() << "|"
+		<< std::setw(10) << phone.getFirstName() << "|"
+		<< std::setw(10) << phone.getLastName() << "|"
+		<< std::setw(10) << phone.getNickname() << "|"
+		<< std::endl;
+
+
+}
+
+// TODO: Mostrar todos os contatos
+// TODO: pegar o input do user com o id do contato
+// TODO: mostrar todos os dados do contato de acordo com o id especificado
+void	ft_print_table(PhoneBook phones)
+{
+	// TODO: Desenhar as colunas com width = 10
+	// 		separadas por pipe |
+	// 	req: Columns [index, firstName, lastName, nickname]
+	std::cout << "________________________________________________________" << std::endl;
+	std::cout << "|  Index  |  First Name  |  Last Name  |  Nickname  |"
+		std::cout << "________________________________________________________" << std::endl;
+	// TODO: Criar funćao que printa somente uma linha com o contato
+	for (int i = 0; i < 8; i++)
+		ft_print_table_row(phone);
+}
+
 int	main(void)
 {
 	PhoneBook phones;
@@ -77,7 +115,7 @@ int	main(void)
 				//TODO: Implementar os indices [x]
 				// Criar a funćão que printa a tabela com as 4 colunas [ ]
 				// 
-				phones.printPhones();
+				ft_print_table(phones);
 				break ;
 			}
 			case 3:
