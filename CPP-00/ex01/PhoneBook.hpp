@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:09:14 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/15 20:38:52 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:58:54 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ class PhoneBook
 	public:
 		PhoneBook();
 		void		add(Contact &phone, int i);
-		// Contact	search(int index);
 		void		printPhones();
-		Contact	getPhones() const[] { return _phones};
+		const 		Contact *getPhones() const ;
+		const 		Contact &getPhonesById(int id) const;
 };
-
 
 #endif

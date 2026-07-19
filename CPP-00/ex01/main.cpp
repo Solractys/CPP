@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:46:50 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/15 20:41:29 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/19 17:09:07 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-Contact create_contact(void)
+Contact create_contact(int index)
 {
 	std::string firstName;
 	std::string lastName;
@@ -40,7 +40,7 @@ Contact create_contact(void)
 	std::cout << std::endl << "dark secret: ";
 	std::cin >> dark;
 
-	Contact phoneContact(firstName, lastName, nickname, phone, dark);
+	Contact phoneContact(firstName, lastName, nickname, phone, dark, index % 8);
 	return (phoneContact);
 }
 
@@ -48,7 +48,7 @@ std::string	ft_get_input(void)
 {
 
 	std::string	opt;
-	std::cout << "\tChoose a option:" << std::endl;
+	std::cout << std::endl << "\tChoose a option:" << std::endl;
 	std::cout << "\t\t1: Add a contact" << std::endl;
 	std::cout << "\t\t2: Search a contact" << std::endl;
 	std::cout << "\t\t3: Exit" << std::endl;
@@ -57,41 +57,62 @@ std::string	ft_get_input(void)
 	return (opt);
 }
 
-// TODO: Funcao pra formatar o nome / truncar se necessário
 std::string	ft_format_name(std::string	name)
 {
-	if (name.length() =< 10)
-			return (name);
-	// TODO: Achar um método pra truncar a string e substituir o ultimo char por '.'
-	name.truncate() // ???
+	if (name.size() >= 10)
+			return (name.substr(0, 10 - 1).append("."));
+	return (name);
 }
 
 void	ft_print_table_row(Contact phone)
 {
 	std::cout << std::left << std::setfill(' ')
 		<< std::setw(10) << phone.getUserId() << "|"
-		<< std::setw(10) << phone.getFirstName() << "|"
-		<< std::setw(10) << phone.getLastName() << "|"
-		<< std::setw(10) << phone.getNickname() << "|"
+		<< std::setw(10) << ft_format_name(phone.getFirstName()) << "|"
+		<< std::setw(10) << ft_format_name(phone.getLastName()) << "|"
+		<< std::setw(10) << ft_format_name(phone.getNickname()) << "|"
 		<< std::endl;
-
-
 }
 
-// TODO: Mostrar todos os contatos
-// TODO: pegar o input do user com o id do contato
-// TODO: mostrar todos os dados do contato de acordo com o id especificado
 void	ft_print_table(PhoneBook phones)
 {
-	// TODO: Desenhar as colunas com width = 10
-	// 		separadas por pipe |
-	// 	req: Columns [index, firstName, lastName, nickname]
-	std::cout << "________________________________________________________" << std::endl;
-	std::cout << "|  Index  |  First Name  |  Last Name  |  Nickname  |"
-		std::cout << "________________________________________________________" << std::endl;
-	// TODO: Criar funćao que printa somente uma linha com o contato
+	std::cout << std::left << std::setfill(' ')
+		<< "|" << std::setw(9) << "Index" << "|"
+		<< std::setw(10) << "Fist Name" << "|"
+		<< std::setw(10) << "Last Name" << "|"
+		<< std::setw(10) << "Nickname" << "|"
+		<< std::endl;
 	for (int i = 0; i < 8; i++)
-		ft_print_table_row(phone);
+		ft_print_table_row(phones.getPhonesById(i));
+}
+
+void	printPhoneDetails(Contact phone)
+{
+	std::cout << "\tIndex: "<< phone.getUserId() << std::endl;
+	std::cout << "\tFirst Name: "<< phone.getFirstName() << std::endl;
+	std::cout << "\tLast Name: "<< phone.getLastName() << std::endl;
+	std::cout << "\tNickname: "<< phone.getNickname() << std::endl;
+	std::cout << "\tPhone Number: " << phone.getPhone() << std::endl;
+	std::cout << "\tDarkSecret: " << phone.getDarkSecret() << std::endl;
+}
+
+void	searchPhone(PhoneBook phones)
+{
+	ft_print_table(phones);
+		std::string answ;
+		std::cout << "Choose '9' to open menu" << std::endl;
+		std::cout << "Index: ";
+		std::cin >> answ;
+		int opt = std::atoi(answ.c_str());
+		if (opt == 9)
+			return ;
+		if (opt > 8 || opt < 0)
+		{
+			std::cout << "Invalid index, try again." << std::endl;
+			return ;
+		}
+		Contact selected = phones.getPhonesById(opt);
+		printPhoneDetails(selected);
 }
 
 int	main(void)
@@ -105,17 +126,14 @@ int	main(void)
 		{
 			case 1:
 			{
-				Contact phone = create_contact();
+				Contact phone = create_contact(i);
 				phones.add(phone, i);
 				i++;
 				break;
 			}
 			case 2:
 			{
-				//TODO: Implementar os indices [x]
-				// Criar a funćão que printa a tabela com as 4 colunas [ ]
-				// 
-				ft_print_table(phones);
+				searchPhone(phones);
 				break ;
 			}
 			case 3:

@@ -6,7 +6,7 @@
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 22:07:43 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/14 19:28:30 by csilva-s         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:59:06 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void	PhoneBook::add(Contact &phone, int i)
 			_phones[i  % 8] = phone;
 }
 
-//void	PhoneBook::search(int index)
-//{
-//	
-//}
-
 void	PhoneBook::printPhones(void)
 {
 	for (int i = 0; i < 8; i++)
@@ -36,3 +31,12 @@ void	PhoneBook::printPhones(void)
 	}
 }
 
+Contact const 	*PhoneBook::getPhones() const 
+{
+	return (_phones);
+}
+
+Contact	const &PhoneBook::getPhonesById (int id) const
+{
+	return ( _phones[id]);
+}
