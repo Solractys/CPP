@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-s <csilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/22 16:54:35 by csilva-s          #+#    #+#             */
-/*   Updated: 2026/07/23 02:18:03 by csilva-s         ###   ########.fr       */
+/*   Created: 2026/07/22 23:22:37 by csilva-s          #+#    #+#             */
+/*   Updated: 2026/07/23 02:21:44 by csilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-
-#include <iostream>
-#include <string>
-
-class Zombie
-{
-	private:
-		std::string	_name;
-	public:
-		Zombie();
-		Zombie(std::string name);
-		Zombie(const Zombie &obj);
-		~Zombie();
-
-		void announce( void );
-};
-
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+#include "Zombie.hpp"
 
 
-#endif
+Zombie::Zombie() : _name("") {}
+
+Zombie::Zombie(std::string name) : _name(name) {}
+
+Zombie::~Zombie() {
+	std::cout << _name << " was deleted" << std::endl;
+}
+
+void	Zombie::announce( void ) { std::cout << _name << ": " << "BraiiiiiiinnnzzzZ..." << std::endl; }
